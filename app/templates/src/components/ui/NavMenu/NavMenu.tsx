@@ -25,7 +25,7 @@ export const NavMenu: React.SFC<NavMenuProps> = (props) => {
                     <a className="nav-menu__link" href={item.url} onClick={() => props.handleClick(item.key)}>
                         {item.title}
                     </a>
-                    {item.children.length > 0 && (
+                    {item?.children?.length > 0 && (
                         <ul className="nav-menu__sub-list">
                             {item.children.map(subItem => (
                                 <li key={subItem.key} className="nav-menu__sub-item" onClick={() => props.handleClick(subItem.key)}>
