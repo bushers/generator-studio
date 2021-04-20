@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Promise from 'bluebird';
 export interface DialogProps {
     /**
      * Function to be called when dialog is closed

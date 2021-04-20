@@ -1,7 +1,6 @@
 
 import { Dialog, DialogProps } from './Dialog';
 import * as React from 'react';
-import * as Promise from 'bluebird';
 import * as ReactDOM from 'react-dom';
 
 export class DialogProvider {

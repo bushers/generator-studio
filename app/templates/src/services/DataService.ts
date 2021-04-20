@@ -1,5 +1,3 @@
-import * as Promise from 'bluebird';
-
 import { Translation } from '../models/models';
 import fb from './Firebase'
 
