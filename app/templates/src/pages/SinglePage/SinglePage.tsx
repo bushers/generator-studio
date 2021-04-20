@@ -3,7 +3,6 @@ import * as ReactRedux from 'react-redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { bindActionCreators, Dispatch } from 'redux';
-import { Cemester, iCmsItem } from 'cemester';
 import {
     configureAnchors,
     goToAnchor,
@@ -12,7 +11,6 @@ import {
 
 import { IStoreState } from '../../_reducers';
 import { iData, iNavData, Dictionary } from '../../models/models';
-import GET_CUSTOM_COMPONENT from './getCustomContent';
 import { DP } from '../../constants';
 import { SHOW_MENU_DIALOG } from '../../components/ui/Dialog/Utils';
 import { Header } from '../../components/ui/Header/Header';
@@ -20,7 +18,6 @@ import { Header } from '../../components/ui/Header/Header';
 export interface SinglePageProps extends ReactRedux.DispatchProp<any>, RouteComponentProps<any> {
     className?: string;
     deeplink: string;
-    content: iCmsItem[];
     data: Dictionary<iData>;
     navData: iNavData[];
 }
@@ -34,7 +31,6 @@ export interface SinglePageState {
 }
 
 export class SinglePage extends React.Component<SinglePageProps, SinglePageState>{
-    cemesterEl: Cemester;
 
     constructor(props: SinglePageProps) {
         super(props);
@@ -83,12 +79,7 @@ export class SinglePage extends React.Component<SinglePageProps, SinglePageState
                     />
                 </div>
                 <div className="single-page__content">
-                    <Cemester
-                        ref={e => (this.cemesterEl = e)}
-                        content={props.content}
-                        url={this.props.match.params.key}
-                        customComponents={i => GET_CUSTOM_COMPONENT(i, this)}
-                    />
+                    <h1>Content</h1>
                 </div>
             </div>
         )
@@ -98,7 +89,6 @@ export class SinglePage extends React.Component<SinglePageProps, SinglePageState
 const mapStateToProps = (state: IStoreState, ownProps): Partial<SinglePageProps> => {
     return {
         deeplink: state.app.deeplinkHtml,
-        content: state.app.content,
         data: state.app.data,
         navData: state.app.navData
     }
